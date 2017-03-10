@@ -1,5 +1,5 @@
-/*--drop table down_files*/
-CREATE TABLE down_files
+/*--drop table down3_files*/
+CREATE TABLE down3_files
 (
  f_id      		int(11) NOT NULL auto_increment    
 ,f_uid        	int(11) 	DEFAULT '0' 

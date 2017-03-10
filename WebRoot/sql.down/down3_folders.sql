@@ -1,5 +1,5 @@
-/*--drop table down_folders*/
-CREATE TABLE down_folders
+/*--drop table down3_folders*/
+CREATE TABLE down3_folders
 (
    fd_id		int(11) 		NOT NULL auto_increment  		 /*--文件夹ID，自动编号*/
   ,fd_name  	varchar(50) 	DEFAULT ''   /*--文件夹名称。test*/

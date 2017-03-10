@@ -16,7 +16,7 @@ BEGIN
 	set i = 0;
 	
 	while(i<f_count) do	
-		insert into down_files(f_uid) values(uid);
+		insert into down3_files(f_uid) values(uid);
 		insert into tb_ids(t_id) values(last_insert_id());	
 		set i = i + 1;
 	end while;
