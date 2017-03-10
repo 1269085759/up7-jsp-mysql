@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import up7.PathTool;
-import up7.biz.PathUuidBuilder;
+import up7.biz.PathGuidBuilder;
 
 
 public class fd_uuid_appender extends fd_appender
 {
 	public fd_uuid_appender()
 	{
-		this.pb = new PathUuidBuilder();
+		this.pb = new PathGuidBuilder();
 	}
 
     public void save() throws IOException, SQLException
