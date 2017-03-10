@@ -16,10 +16,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `up6_folders`
+-- 表的结构 `up7_folders`
 --
 
-CREATE TABLE up6_folders (
+CREATE TABLE up7_folders (
    fd_id 			int(11) NOT NULL auto_increment
   ,fd_name 			varchar(50) default ''
   ,fd_pid 			int(11) default '0'

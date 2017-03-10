@@ -12,8 +12,8 @@ CREATE PROCEDURE fd_remove(
 	,in uid int
 )
 BEGIN
-	update up6_files set f_deleted=1 where f_id=id_file and f_uid=uid;
-	update up6_files set f_deleted=1 where f_pidRoot=id_folder and f_uid=uid;
-	update up6_folders set fd_delete=1 where fd_id=id_folder and fd_uid=uid;
+	update up7_files set f_deleted=1 where f_id=id_file and f_uid=uid;
+	update up7_files set f_deleted=1 where f_pidRoot=id_folder and f_uid=uid;
+	update up7_folders set fd_delete=1 where fd_id=id_folder and fd_uid=uid;
 END$$
 DELIMITER;/*--5.7.9版本MySQL必须加这一句，否则包含多条SQL语句的存储过程无法创建成功*/

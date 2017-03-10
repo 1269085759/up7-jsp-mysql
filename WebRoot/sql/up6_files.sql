@@ -16,10 +16,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `up6_files`
+-- 表的结构 `up7_files`
 --
 
-CREATE TABLE `up6_files` (
+CREATE TABLE `up7_files` (
   `f_id` int(11) NOT NULL auto_increment,
   `f_pid` int(11) default '0',
   `f_pidRoot` int(11) default '0',
@@ -54,7 +54,7 @@ in posSvr bigint(19)
 ,in uidSvr int
 ,in fidSvr int
 ,in complete tinyint(1))
-update up6_files set f_pos=posSvr,f_lenSvr=lenSvr,f_perSvr=perSvr,f_complete=complete 
+update up7_files set f_pos=posSvr,f_lenSvr=lenSvr,f_perSvr=perSvr,f_complete=complete 
 where f_uid=uidSvr and f_id=fidSvr;
 
 --更新文件夹进度
@@ -65,4 +65,4 @@ in uidSvr int
 ,in fd_lenSvr bigint(19)
 ,in perSvr varchar(6)
 )
-update up6_files set f_lenSvr=fd_lenSvr,f_perSvr=perSvr where f_uid=uidSvr and f_id=fd_idSvr;
+update up7_files set f_lenSvr=fd_lenSvr,f_perSvr=perSvr where f_uid=uidSvr and f_id=fd_idSvr;

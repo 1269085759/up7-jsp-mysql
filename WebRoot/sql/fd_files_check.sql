@@ -38,7 +38,7 @@ BEGIN
 
 	/*查询数据库*/
 	select *
-	from (select * from up6_files where f_id in (select max(f_id) from up6_files group by f_md5))fs
+	from (select * from up7_files where f_id in (select max(f_id) from up7_files group by f_md5))fs
 	inner join t_md5 t
 	on t.md5 = fs.f_md5 ;
 END$$
