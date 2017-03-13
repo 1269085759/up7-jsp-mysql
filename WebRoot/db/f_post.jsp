@@ -122,9 +122,8 @@ if ( 	StringUtils.isBlank( lenSvr )
 	XDebug.Output("fd_perSvr",fd_perSvr);
 	
 	//保存文件块数据
-	FileResumerPart res = new FileResumerPart();
-	res.m_RangePos = Long.parseLong(f_pos);
-	res.SaveFileRange(rangeFile, pathSvr);
+	FileBlockWriter res = new FileBlockWriter();
+	res.write(pathSvr,Long.parseLong(f_pos),rangeFile);
 	boolean cmp = StringUtils.equals(complete,"true");
 	
 	//更新文件进度信息
@@ -133,13 +132,18 @@ if ( 	StringUtils.isBlank( lenSvr )
 	if(fd) fd = !StringUtils.isBlank(fd_lenSvr);
 	if(fd) fd = Integer.parseInt(fd_idSvr)>0;
 	if(fd) fd = Long.parseLong(fd_lenSvr)>0;
-	if(fd)
+	
+	//第一块数据
+	if(Long.parseLong(f_pos) == 0 )
 	{
-		db.fd_fileProcess(Integer.parseInt(uid),Integer.parseInt(idSvr),Long.parseLong(f_pos),Long.parseLong(lenSvr),perSvr,Integer.parseInt(fd_idSvr),Long.parseLong(fd_lenSvr),fd_perSvr,cmp);
-	}
-	else
-	{
-		db.f_process(Integer.parseInt(uid),Integer.parseInt(idSvr),Long.parseLong(f_pos),Long.parseLong(lenSvr),perSvr,cmp);		
+		if(fd)
+		{
+			db.fd_fileProcess(Integer.parseInt(uid),Integer.parseInt(idSvr),Long.parseLong(f_pos),Long.parseLong(lenSvr),perSvr,Integer.parseInt(fd_idSvr),Long.parseLong(fd_lenSvr),fd_perSvr,cmp);
+		}
+		else
+		{
+			db.f_process(Integer.parseInt(uid),Integer.parseInt(idSvr),Long.parseLong(f_pos),Long.parseLong(lenSvr),perSvr,cmp);		
+		}
 	}
 			
 	out.write("ok");
