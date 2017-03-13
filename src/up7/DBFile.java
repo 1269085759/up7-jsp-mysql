@@ -784,8 +784,9 @@ public class DBFile {
 		try {
 			con.setAutoCommit(false);
 			Statement stmt = con.createStatement();
-			stmt.addBatch("update up7_files set f_perSvr='100%' ,f_complete=1 where f_id=" + f_id);
+			stmt.addBatch("update up7_files set f_perSvr='100%',f_lenSvr=f_lenLoc,f_complete=1 where f_id=" + f_id);
 			stmt.addBatch("update up7_folders set fd_complete=1 where fd_id=" + fd_id + " and fd_uid=" + uid);
+			stmt.addBatch("update up7_files set f_perSvr='100%',f_lenSvr=f_lenLoc,f_complete=1 where f_pidRoot=" + fd_id);//更新所有子文件状态，设为已完成
 			stmt.executeBatch();
 			con.commit();
 			stmt.close();
@@ -856,17 +857,20 @@ public class DBFile {
 	/// <summary>
 	/// 上传完成。将所有相同MD5文件进度都设为100%
 	/// </summary>
-	public void UploadComplete(String md5)
+	public void complete(int uid,int idSvr)
 	{
-		String sql = "update up7_files set f_lenSvr=f_lenLoc,f_perSvr='100%',f_complete=1 where f_md5=?";
+		String sql = "update up7_files set f_lenSvr=f_lenLoc,f_perSvr='100%',f_complete=1 where f_id=? and f_uid=?";
 		DbHelper db = new DbHelper();
 		PreparedStatement cmd = db.GetCommand(sql);
 		
 		try 
 		{
-			cmd.setString(1, md5);
-			db.ExecuteNonQuery(cmd);//在部分环境中测试发现执行后没有效果。
-		} catch (SQLException e) {e.printStackTrace();}
+			cmd.setInt(1, idSvr);
+			cmd.setInt(2, uid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		db.ExecuteNonQuery(cmd);//在部分环境中测试发现执行后没有效果。
 	}
 
 	/// <summary>

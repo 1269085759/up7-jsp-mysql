@@ -34,7 +34,6 @@
 
 String uid 			= "";// 		= request.getParameter("uid");
 String idSvr 		= "";// 		= request.getParameter("fid");
-String md5 			= "";// 			= request.getParameter("md5");
 String perSvr 		= "";
 String lenSvr		= "";
 String lenLoc		= "";
@@ -77,7 +76,6 @@ while (fileItr.hasNext())
 		String fv = rangeFile.getString(); 
 		if(fn.equals("uid")) uid = fv;
 		if(fn.equals("idSvr")) idSvr = fv;
-		if(fn.equals("md5")) md5 = fv;
 		if(fn.equals("lenSvr")) lenSvr = fv;
 		if(fn.equals("lenLoc")) lenLoc = fv;
 		if(fn.equals("perSvr")) perSvr = fv;
@@ -98,13 +96,11 @@ while (fileItr.hasNext())
 if ( 	StringUtils.isBlank( lenSvr )
 	|| 	StringUtils.isBlank( uid )
 	|| 	StringUtils.isBlank( idSvr )
-	|| 	StringUtils.isBlank( md5 )
 	|| 	StringUtils.isBlank( f_pos) 
 	|| 	StringUtils.isBlank(pathSvr))
 {
 	XDebug.Output("uid", uid);
 	XDebug.Output("idSvr", idSvr);
-	XDebug.Output("md5", md5);
 	XDebug.Output("f_pos", f_pos);
 	XDebug.Output("param is null");
 	return;
