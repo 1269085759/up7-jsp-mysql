@@ -365,6 +365,12 @@ public class fd_appender
 
     void update_file(fd_file f) throws SQLException
     {
+    	if(!f.fdTask)
+    	{
+    		FileBlockWriter fr = new FileBlockWriter();
+    		fr.make(f.pathSvr, f.lenLoc);
+    	}
+    	
         this.cmd_update_file.setInt(1, f.pidSvr);//f_pid
         this.cmd_update_file.setInt(2, f.pidRoot);//f_pidRoot
         this.cmd_update_file.setBoolean(3, f.fdTask);//f_fdTask

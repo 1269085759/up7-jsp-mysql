@@ -41,7 +41,7 @@ CREATE TABLE `up7_files` (
   `f_complete` tinyint(1) default '0',
   `f_time` timestamp NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `f_deleted` tinyint(1) default '0',
-  `f_sign` varchar(32) default ''
+  `f_sign` varchar(32) default '',
   PRIMARY KEY  (`f_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
