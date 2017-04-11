@@ -1,6 +1,7 @@
 <%@ page language="java" import="up7.*" pageEncoding="UTF-8"%><%@
 	page contentType="text/html;charset=UTF-8"%><%@	
 	page import="net.sf.json.*" %><%@
+	page import="up7.*" %><%@
 	page import="up7.biz.*" %><%@
 	page import="up7.model.*" %><%@	
 	page import="org.apache.commons.lang.StringUtils" %><%@

@@ -7,8 +7,9 @@
 	page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %><%@
 	page import="org.apache.commons.lang.StringUtils" %><%@
 	page import="java.net.URLDecoder"%><%@ 
-	page import="java.util.Iterator"%><%@ 
-	page import="java.util.List"%><%
+	page import="java.util.Iterator"%><%@	
+	page import="java.util.List"%><%@
+	page import="up7.*"%><% 
 /*
 	此页面负责将文件块数据写入文件中。
 	此页面一般由控件负责调用
