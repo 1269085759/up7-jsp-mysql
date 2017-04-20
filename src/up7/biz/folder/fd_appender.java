@@ -49,6 +49,8 @@ public class fd_appender
 		this.svr_files = new HashMap<String,fd_file>();
 	}
 	
+	public void make_folders(){}
+	
 	public void save() throws SQLException, IOException
 	{
         this.get_md5s();//提取所有文件的MD5
@@ -58,6 +60,7 @@ public class fd_appender
 
         this.set_ids();     //设置文件和文件夹id
         this.update_rel();  //更新结构关系
+        this.make_folders();//创建层级路径
 
         //对空文件夹的处理，或0字节文件夹的处理
         if(this.m_root.lenLoc == 0) this.m_root.complete = true;
