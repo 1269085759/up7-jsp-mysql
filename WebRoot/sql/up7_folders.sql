@@ -20,9 +20,9 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE up7_folders (
-   fd_id 			int(11) NOT NULL auto_increment
+   fd_sign 			char(36) NOT NULL
   ,fd_name 			varchar(50) default ''
-  ,fd_pid 			int(11) default '0'
+  ,fd_pidSign 		char(32) default ''
   ,fd_uid 			int(11) default '0'
   ,fd_length 		bigint(19) default '0'
   ,fd_size 			varchar(50) default '0'
@@ -35,7 +35,7 @@ CREATE TABLE up7_folders (
   ,fd_delete 		tinyint(1) default '0'
   ,fd_json 			varchar(20000) default ''
   ,timeUpload 		timestamp NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
-  ,fd_pidRoot		int(11) default '0'		 /*--根级ID*/
+  ,fd_rootSign		char(36) default ''		 /*--根级uuid*/
   ,fd_pathRel		varchar(255) default ''  /*--相对路径。基于顶级节点。root\\child\\self*/
-  ,PRIMARY KEY  (fd_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  ,PRIMARY KEY  (fd_sign)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

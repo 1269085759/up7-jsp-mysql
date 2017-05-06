@@ -133,6 +133,23 @@ public class DBFolder {
 			e.printStackTrace();
 		}
 	}
+	
+	public void remove(String idSign,Integer uid)
+	{
+		String sql = "{call fd_remove(?,?,?)}";
+		DbHelper db = new DbHelper();
+		try 
+		{
+			CallableStatement cmd = db.GetCommandStored(sql);
+			cmd.setString(1, idSign);
+			cmd.setInt(2, uid);
+			cmd.execute();
+			cmd.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * 根据文件夹ID获取文件夹信息和未上传完的文件列表，转为JSON格式。

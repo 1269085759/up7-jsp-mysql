@@ -1,6 +1,8 @@
 <%@ page language="java" import="up7.*" pageEncoding="UTF-8"%><%@
 	page contentType="text/html;charset=UTF-8"%><%@
 	page import="up7.biz.*" %><%@
+	page import="up7.biz.redis.*" %><%@
+	page import="redis.clients.jedis.Jedis" %><%@
 	page import="org.apache.commons.lang.StringUtils" %><%@
 	page import="java.net.URLEncoder" %><%
 /*
@@ -18,8 +20,11 @@ String cbk = request.getParameter("callback");//jsonp
 
 if(! StringUtils.isBlank(uid) )
 {
-	un_builder fd = new un_builder();
-	String json = fd.read(uid);
+	Jedis j = JedisTool.con();
+	tasks t = new tasks(j);
+	t.uid = uid;
+	String json = t.toJson();
+	j.close();
 	if(!StringUtils.isBlank(json))
 	{
 		json = URLEncoder.encode(json,"utf-8");
