@@ -456,7 +456,7 @@ public class DBFile {
 		StringBuilder sb = new StringBuilder();
 		sb.append("insert into up7_files(");
 		sb.append(" f_idSign");
-		sb.append(" f_sizeLoc");
+		sb.append(",f_sizeLoc");
 		sb.append(",f_pos");
 		sb.append(",f_lenSvr");
 		sb.append(",f_perSvr");

@@ -22,7 +22,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE `up7_files` (
   `f_idSign` char(36) NOT NULL,
   `f_pidSign` char(36) default '',
-  `f_RootSign` char(36) default '',
+  `f_rootSign` char(36) default '',
   `f_fdTask` tinyint(1) default '0',
   `f_fdChild` tinyint(1) default '0',
   `f_uid` int(11) default '0',
