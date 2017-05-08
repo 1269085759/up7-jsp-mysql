@@ -665,6 +665,10 @@ function HttpUploaderMgr()
             var param = { name: "stop_file", idSign: f.idSign, config: _this.Config };
             this.postMessage(param);
         }
+        , delFolder: function (f) {
+            var param = { name: "del_folder", idSign: f.idSign};
+            this.postMessage(param);
+        }
         , postMessage:function(json)
         {
             try
