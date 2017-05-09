@@ -136,7 +136,7 @@ public class DBFolder {
 	
 	public void remove(String idSign,Integer uid)
 	{
-		String sql = "{call fd_remove(?,?,?)}";
+		String sql = "{call fd_remove(?,?)}";
 		DbHelper db = new DbHelper();
 		try 
 		{
