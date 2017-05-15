@@ -37,6 +37,7 @@ CREATE TABLE `up7_files` (
   `f_pos` bigint(19) default '0',
   `f_blockCount` int(11) default '1',
   `f_blockSize` int(11) default '0',
+  `f_blockPath` varchar(1000) default '',
   `f_lenSvr` bigint(19) default '0',
   `f_perSvr` varchar(6) default '0%',
   `f_complete` tinyint(1) default '0',
