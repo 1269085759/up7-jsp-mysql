@@ -10,18 +10,20 @@ public class DBFolder {
 	{
 	}
 
-    /// <summary>
-    /// 子文件上传完毕
-    /// </summary>
-    /// <param name="fd_idSvr"></param>
-	public  static void child_complete(int fd_idSvr)
-    {
-        String sql = "update up7_folders set fd_filesComplete=fd_filesComplete+1 where fd_id=?";
-        DbHelper db = new DbHelper();
-        PreparedStatement cmd = db.GetCommand(sql);
-		try {
-			cmd.setInt(1, fd_idSvr);
-		} catch (SQLException e) {e.printStackTrace();}        
-        db.ExecuteNonQuery(cmd);
-    }
+	public void remove(String idSign,Integer uid)
+	{
+		String sql = "{call fd_remove(?,?)}";
+		DbHelper db = new DbHelper();
+		try 
+		{
+			CallableStatement cmd = db.GetCommandStored(sql);
+			cmd.setString(1, idSign);
+			cmd.setInt(2, uid);
+			cmd.execute();
+			cmd.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

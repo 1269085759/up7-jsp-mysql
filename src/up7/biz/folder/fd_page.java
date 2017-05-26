@@ -20,10 +20,8 @@ public class fd_page
 	{
 		Integer pageSize = 100;//每页100条数据
 		Integer index = Integer.parseInt(pageIndex);
-		Integer pageStart = ((index-1) * pageSize) + 1;
-		Integer pageEnd = index * pageSize;
-		String sqlData = "select f_nameLoc,f_pathLoc,f_pathSvr,f_pathRel,f_blockPath,f_blockSize,f_lenLoc,f_sizeLoc from up7_files where f_rootSign='"+id+"'";
-        String sql = String.format("select * from (select a.*, rownum rn from (%s) a where rownum <= %d) where rn >= %d",sqlData,pageEnd,pageStart);
+		Integer pageStart = ((index-1) * pageSize);
+        String sql = String.format("select f_nameLoc,f_pathLoc,f_pathSvr,f_pathRel,f_blockPath,f_blockSize,f_lenLoc,f_sizeLoc from up7_files where f_rootSign='%s' limit %d, %d", id,pageStart,pageSize);
 
         List<xdb_files> files = new ArrayList<xdb_files>();
         DbHelper db = new DbHelper();
