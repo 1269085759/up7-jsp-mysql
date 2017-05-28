@@ -163,6 +163,9 @@ public class FileDbWriter
 				f.child = true;//
 				this.save(cmd, f);
 				files.add(f);
+				
+				//清除文件缓存
+				this.m_cache.del(k);
 			}
 			
 			//合并文件
@@ -172,7 +175,7 @@ public class FileDbWriter
 				{
 					bm.merge(f);	
 				}
-			}
+			}			
 			files.clear();
 			keys.clear();
 		}

@@ -146,21 +146,22 @@ if ( 	StringUtils.isBlank( lenSvr )
 				
 		if(!j.exists(idSign))
 		{
-			//添加到文件夹
+			//添加到文件列表
 			up7.biz.folder.fd_files_redis root = new up7.biz.folder.fd_files_redis(j,fd_idSign);		
 			root.add(idSign);
-		}
-		
-		//将文件信息添加到缓存,文件夹上传完毕后会将缓存数据写入数据库
-		cache.create(f_child);
+			
+			//添加文件信息
+			cache.create(f_child);
+		}//更新文件夹进度
+		else if(f_pos.equalsIgnoreCase("0") )
+		{
+			cache.process(fd_idSign,fd_perSvr,fd_lenSvr,"0","0");
+		}		
 		
 		//保存块
 		up7.biz.file_part part = new up7.biz.file_part();
 		part.save(partPath,rangeFile);
-		rangeFile.delete();
-		
-		//更新文件夹进度
-		if(f_pos.equalsIgnoreCase("0") ) cache.process(fd_idSign,fd_perSvr,fd_lenSvr,"0","0");
+		rangeFile.delete();		
 	}
 	j.close();
 			
